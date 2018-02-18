@@ -3,12 +3,14 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
         try {
+            PrintWriter output = new PrintWriter("beers.txt","UTF-8");
             URL url = new URL("http://fredagscafeen.dk/prices/");
             BufferedReader s = new BufferedReader(new InputStreamReader(url.openStream()));
             ArrayList<String> site = new ArrayList<>();
@@ -25,6 +27,11 @@ public class Main {
                 beers.set(i,beers.get(i).replaceAll(".*<td>","").replaceAll("</td>.*",""));
                 System.out.println(beers.get(i));
             }
+            Collections.sort(beers);
+            for (String beer : beers){
+                output.println(beer);
+            }
+            output.close();
 
 
         } catch (MalformedURLException e) {
