@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
         try {
-            PrintWriter output = new PrintWriter("beers.txt","UTF-8");
+            PrintWriter output = new PrintWriter("out/beers.txt","UTF-8");
             URL url = new URL("http://fredagscafeen.dk/prices/");
             BufferedReader s = new BufferedReader(new InputStreamReader(url.openStream()));
             ArrayList<String> site = new ArrayList<>();
